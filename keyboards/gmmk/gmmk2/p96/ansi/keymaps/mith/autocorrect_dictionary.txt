@@ -1,0 +1,10 @@
+:guage     -> gauge
+:the:the:  -> the
+accomodate -> accommodate
+acommodate -> accommodate
+apparrent  -> apparent
+cieling    -> ceiling
+concensus  -> consensus
+gaurantee  -> guarantee
+recieve    -> receive
+seperate   -> separate
