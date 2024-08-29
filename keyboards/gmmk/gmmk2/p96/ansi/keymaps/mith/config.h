@@ -90,7 +90,7 @@
 
 #define CAPS_WORD_IDLE_TIMEOUT 0  // Milliseconds. 0 for infinite.
 
-#define DEBOUNCE 1
+#define DEBOUNCE 3
 #define USB_POLLING_INTERVAL_MS 1
 #define QMK_KEYS_PER_SCAN 12
 #define MATRIX_IO_DELAY 1
