@@ -140,8 +140,8 @@ void doubleshift_each(tap_dance_state_t *state, void *user_data) {
 // doublectl
 void doublectl_each(tap_dance_state_t *state, void *user_data) {
 	switch (state->count) {
-		case 1: tap_code(KC_LBRC); tap_code(KC_RBRC); tap_code(KC_LEFT); break;
-		case 2: tap_code(KC_BSPC); tap_code(KC_DEL); register_code(KC_LSFT); tap_code(KC_COMM); tap_code(KC_DOT); unregister_code(KC_LSFT); tap_code(KC_LEFT); break;
+		case 1: register_code(KC_LSFT); tap_code(KC_8); tap_code(KC_8); unregister_code(KC_LSFT); tap_code(KC_LEFT); break;
+		case 2: tap_code(KC_BSPC); tap_code(KC_DEL); register_code(KC_LSFT); tap_code(KC_QUOT); tap_code(KC_QUOT); unregister_code(KC_LSFT); tap_code(KC_LEFT); break;
 		default: break;
 	}
 }
@@ -149,8 +149,8 @@ void doublectl_each(tap_dance_state_t *state, void *user_data) {
 // doublealt
 void doublealt_each(tap_dance_state_t *state, void *user_data) {
 	switch (state->count) {
-		case 1: register_code(KC_LSFT); tap_code(KC_8); tap_code(KC_8); unregister_code(KC_LSFT); tap_code(KC_LEFT); break;
-		case 2: tap_code(KC_BSPC); tap_code(KC_DEL); register_code(KC_LSFT); tap_code(KC_QUOT); tap_code(KC_QUOT); unregister_code(KC_LSFT); tap_code(KC_LEFT); break;
+		case 1: tap_code(KC_LBRC); tap_code(KC_RBRC); tap_code(KC_LEFT); break;
+		case 2: tap_code(KC_BSPC); tap_code(KC_DEL); register_code(KC_LSFT); tap_code(KC_COMM); tap_code(KC_DOT); unregister_code(KC_LSFT); tap_code(KC_LEFT); break;
 		default: break;
 	}
 }
