@@ -8,3 +8,4 @@ concensus  -> consensus
 gaurantee  -> guarantee
 recieve    -> receive
 seperate   -> separate
+dungoen    -> dungeon
