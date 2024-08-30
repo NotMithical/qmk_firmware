@@ -29,6 +29,7 @@ const custom_shift_key_t custom_shift_keys[] = {
 uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
 
 int FL_KEYS[] = {0, 7, 8, 9, 10, 11, 12, 59};
+int WASD_KEYS[] = {38, 55, 56, 57};
 int side1[] = {100, 101, 102, 103, 104, 105, 106, 107, 108, 109};
 int side2[] = {110, 111, 112, 113, 114, 115, 116, 117, 118, 119};
 
@@ -249,8 +250,8 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max)
 	}
 	
 	if (layer_state_is(_LGAME)) {
-											 rgb_matrix_set_color(38, 0, 255, 0);
-		rgb_matrix_set_color(55, 0, 255, 0); rgb_matrix_set_color(56, 0, 255, 0); rgb_matrix_set_color(57, 0, 255, 0);
+		for (int i = 0; i < 4; i++)
+			rgb_matrix_set_color(WASD_KEYS[i], 0, 255, 0);
 	}
 	
 	if (layer_state_is(_LCHL)) {
