@@ -140,8 +140,8 @@ void doubleshift_each(tap_dance_state_t *state, void *user_data) {
 // doublectl
 void doublectl_each(tap_dance_state_t *state, void *user_data) {
 	switch (state->count) {
-		case 1: register_code(KC_LSFT); tap_code(KC_8); tap_code(KC_8); unregister_code(KC_LSFT); tap_code(KC_LEFT); break;
-		case 2: tap_code(KC_BSPC); tap_code(KC_DEL); register_code(KC_LSFT); tap_code(KC_QUOT); tap_code(KC_QUOT); unregister_code(KC_LSFT); tap_code(KC_LEFT); break;
+		case 1: register_code(KC_LSFT); tap_code(KC_QUOT); tap_code(KC_QUOT); unregister_code(KC_LSFT); tap_code(KC_LEFT); break;
+		case 2: tap_code(KC_BSPC); tap_code(KC_DEL); register_code(KC_LSFT); tap_code(KC_8); tap_code(KC_8); unregister_code(KC_LSFT); tap_code(KC_LEFT); break;
 		default: break;
 	}
 }
@@ -282,7 +282,6 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max)
 			RGB_MATRIX_INDICATOR_SET_COLOR(54, 255, 128, 0); //caps(lock||word) orange
 		}
 	}
-	
     return true;
 }
 
