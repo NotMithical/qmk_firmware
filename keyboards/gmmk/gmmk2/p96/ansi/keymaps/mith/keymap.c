@@ -28,7 +28,7 @@ const custom_shift_key_t custom_shift_keys[] = {
 
 uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
 
-int FL_KEYS[] = {0, 7, 8, 9, 10, 11, 12, 59};
+int FL_KEYS[] = {0, 7, 8, 9, 10, 59};
 int WASD_KEYS[] = {38, 55, 56, 57};
 int side1[] = {100, 101, 102, 103, 104, 105, 106, 107, 108, 109};
 int side2[] = {110, 111, 112, 113, 114, 115, 116, 117, 118, 119};
@@ -68,7 +68,7 @@ combo_t key_combos[] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Keymap _BL: Base Layer (Default Layer)
 [_BL] = LAYOUT(
-  KC_ESC,        KC_F1,    KC_F2,    KC_F3,    TD(QUICK_F4),    KC_F5,    KC_F6,    KC_MPRV,    KC_MPLY,    KC_MNXT,    KC_MUTE,    KC_F13,    KC_F14,    KC_PSCR,   KC_DEL,   KC_HOME,   KC_PGDN,   KC_PGUP,
+  KC_ESC,        KC_F1,    KC_F2,    KC_F3,    TD(QUICK_F4),    KC_F5,    KC_F6,    KC_MPRV,    KC_MPLY,    KC_MNXT,    KC_MUTE,    KC_VOLD,   KC_VOLU,   KC_PSCR,   KC_DEL,   KC_HOME,   KC_PGDN,   KC_PGUP,
   KC_GRV,        KC_1,     KC_2,     KC_3,     KC_4,            KC_5,     KC_6,     KC_7,       KC_8,       KC_9,       KC_0,       KC_MINS,   KC_EQL,    KC_BSPC,   KC_NUM,   KC_PSLS,   KC_PAST,   KC_PMNS,
   KC_TAB,        KC_Q,     KC_W,     KC_E,     KC_R,            KC_T,     KC_Y,     KC_U,       KC_I,       KC_O,       KC_P,       KC_LBRC,   KC_RBRC,   KC_BSLS,   KC_P7,    KC_P8,     KC_P9,     KC_PPLS,
   TD(CAPSWORD),  KC_A,     KC_S,     KC_D,     KC_F,            KC_G,     KC_H,     KC_J,       KC_K,       KC_L,       KC_SCLN,    KC_QUOT,              KC_ENT,    KC_P4,    KC_P5,     KC_P6,
@@ -261,7 +261,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max)
 	}
 	
 	if (layer_state_is(_FL)) {
-		for (int i = 0; i < 8; i++) {
+		for (int i = 0; i < 6; i++) {
 			rgb_matrix_set_color(FL_KEYS[i], 255, 0, 0);
 		}
 	}
