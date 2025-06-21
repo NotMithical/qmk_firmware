@@ -86,7 +86,7 @@
 
 #define LAYER_STATE_8BIT
 
-#define FORCE_NKRO
+#define NKRO_DEFAULT_ON true
 
 #define CAPS_WORD_IDLE_TIMEOUT 0  // Milliseconds. 0 for infinite.
 
