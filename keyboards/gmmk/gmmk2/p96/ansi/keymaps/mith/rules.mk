@@ -16,6 +16,4 @@ GRAVE_ESC_ENABLE = no
 AVR_USE_MINIMAL_PRINTF = yes
 MAGIC_ENABLE = no
 BOOTMAGIC_ENABLE = yes
-DEBOUNCE_TYPE = asym_eager_defer_pk
-SRC += features/socd_cleaner.c
-SRC += features/custom_shift_keys.c
+DEBOUNCE_TYPE = sym_defer_pk

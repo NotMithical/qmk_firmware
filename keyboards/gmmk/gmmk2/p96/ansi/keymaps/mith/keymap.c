@@ -15,20 +15,18 @@
  */
 
 #include QMK_KEYBOARD_H
-#include "features/socd_cleaner.h"
-#include "features/custom_shift_keys.h"
 
-socd_cleaner_t socd_v = {{KC_W, KC_S}, SOCD_CLEANER_LAST};
-socd_cleaner_t socd_h = {{KC_A, KC_D}, SOCD_CLEANER_LAST};
-
-const custom_shift_key_t custom_shift_keys[] = {
-	{KC_F13, KC_F15},
-	{KC_F14, KC_F16},
+socd_cleaner_t socd_opposing_pairs[] = {
+    {{KC_W, KC_S}, SOCD_CLEANER_LAST},
+    {{KC_A, KC_D}, SOCD_CLEANER_LAST},
 };
 
-uint8_t NUM_CUSTOM_SHIFT_KEYS = sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
+const custom_shift_key_t custom_shift_keys[] = {
+    {KC_F13, KC_F15}, // I'll be fully honest with you I have no idea what these are meant to do
+    {KC_F14, KC_F16},
+};
 
-int FL_KEYS[] = {0, 7, 8, 9, 10, 11, 12, 59};
+int FL_KEYS[] = {0, 7, 8, 9, 10, 11, 12, 59, 15};
 int WASD_KEYS[] = {38, 55, 56, 57};
 int side1[] = {100, 101, 102, 103, 104, 105, 106, 107, 108, 109};
 int side2[] = {110, 111, 112, 113, 114, 115, 116, 117, 118, 119};
@@ -95,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   // Keymap _FL: Function Layer
 [_FL] = LAYOUT(
-  QK_BOOT,  _______,  _______,  _______,  _______,  _______,  _______,  KC_F7,  KC_F8,  KC_F9,  KC_F10,  KC_F11,  KC_F12,   _______,  _______,  _______,  _______,  _______,
+  QK_BOOT,  _______,  _______,  _______,  _______,  _______,  _______,  KC_F7,  KC_F8,  KC_F9,  KC_F10,  KC_F11,  KC_F12,   _______,  _______,  KC_INS,  _______,  _______,
   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,   _______,  _______,  _______,  _______,  _______,
   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,   _______,  _______,  _______,  _______,  _______,
   _______,  _______,  _______,  _______,  _______,  TG(_LGAME),  _______,  _______,  _______,  _______,  _______,  _______,  _______,             _______,  _______,  _______,
@@ -181,14 +179,6 @@ tap_dance_action_t tap_dance_actions[] = {
 	[CAPSWORD] = ACTION_TAP_DANCE_FN_ADVANCED_WITH_RELEASE(capsword_each, capsword_each_release, NULL, NULL),
 };
 
-bool process_record_user(uint16_t keycode, keyrecord_t* record) {
-	if (!process_socd_cleaner(keycode, record, &socd_v)) { return false; }
-	if (!process_socd_cleaner(keycode, record, &socd_h)) { return false; }
-	
-	if (!process_custom_shift_keys(keycode, record)) { return false; }
-	return true;
-}
-
 // Toggle things depending on active layer
 layer_state_t layer_state_set_user(layer_state_t state) {
 	socd_cleaner_enabled = IS_LAYER_ON_STATE(state, _LGAME);
@@ -261,7 +251,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max)
 	}
 	
 	if (layer_state_is(_FL)) {
-		for (int i = 0; i < 8; i++) {
+		for (int i = 0; i < 9; i++) {
 			rgb_matrix_set_color(FL_KEYS[i], 255, 0, 0);
 		}
 	}

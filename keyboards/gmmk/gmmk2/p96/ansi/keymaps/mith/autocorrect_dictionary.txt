@@ -9,3 +9,5 @@ gaurantee  -> guarantee
 recieve    -> receive
 seperate   -> separate
 dungoen    -> dungeon
+warfrae    -> warframe
+sunday     -> subway
