@@ -72,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   TD(CAPSWORD),  KC_A,     KC_S,     KC_D,     KC_F,            KC_G,     KC_H,     KC_J,       KC_K,       KC_L,       KC_SCLN,    KC_QUOT,              KC_ENT,    KC_P4,    KC_P5,     KC_P6,
   KC_LSFT,       KC_Z,     KC_X,     KC_C,     KC_V,            KC_B,     KC_N,     KC_M,       KC_COMM,    KC_DOT,     KC_SLSH,    KC_RSFT,              KC_UP,     KC_P1,    KC_P2,     KC_P3,     KC_PENT,
   KC_LCTL,       KC_LGUI,  KC_LALT,                             KC_SPC,                                     KC_RALT,    MO(_FL),    KC_RCTL,   KC_LEFT,   KC_DOWN,   KC_RGHT,  KC_P0,     KC_PDOT),
-  
+
   // For enabling SOCD
 [_LGAME] = LAYOUT(
   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,   _______,  _______,  _______,  _______,  _______,
@@ -81,7 +81,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,             _______,  _______,  _______,
   _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,   _______,  _______,  _______,  _______,
   _______,  _______,   _______,                      _______,                                _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______),
-  
+
     // Keymap _LCHL: Lighting Control Layer
 [_LCHL] = LAYOUT(
   _______,  RGB_VAD,  _______,  _______,  RGB_VAI,  RGB_SAD,  _______,  _______,  RGB_SAI,  RGB_HUD,  _______,  _______,  RGB_HUI,   _______,  _______,  _______,  _______,  _______,
@@ -109,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // quick f4
 void quick_f4_each(tap_dance_state_t *state, void *user_data) {
 	register_code(KC_F4);
-	
+
 	if (state->count == 2) {
 		unregister_code(KC_F4);
 		register_code(KC_LALT);
@@ -156,7 +156,7 @@ void doublealt_each(tap_dance_state_t *state, void *user_data) {
 // capsword
 void capsword_each(tap_dance_state_t *state, void *user_data) {
 	register_code(KC_CAPS);
-	
+
 	if (state->count == 2) {
 		unregister_code(KC_CAPS);
 		caps_word_on();
@@ -182,7 +182,7 @@ tap_dance_action_t tap_dance_actions[] = {
 // Toggle things depending on active layer
 layer_state_t layer_state_set_user(layer_state_t state) {
 	socd_cleaner_enabled = IS_LAYER_ON_STATE(state, _LGAME);
-	
+
 	if (IS_LAYER_ON_STATE(state, _LGAME)) {
 		autocorrect_disable();
 		combo_disable();
@@ -234,22 +234,22 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max)
     if (host_keyboard_led_state().caps_lock) {
         RGB_MATRIX_INDICATOR_SET_COLOR(54, 255, 0, 0); //capslock red
 	}
-	
+
     if (host_keyboard_led_state().num_lock == false) {
 		RGB_MATRIX_INDICATOR_SET_COLOR(32, 255, 0, 0); //numlock red
 	}
-	
+
 	if (layer_state_is(_LGAME)) {
 		for (int i = 0; i < 4; i++)
 			rgb_matrix_set_color(WASD_KEYS[i], 0, 255, 0);
 	}
-	
+
 	if (layer_state_is(_LCHL)) {
 		rgb_matrix_set_color(1, 0, 32, 0);      rgb_matrix_set_color(2, 0, 64, 0);     rgb_matrix_set_color(3, 0, 128, 0);    rgb_matrix_set_color(4, 0, 255, 0);
 		rgb_matrix_set_color(5, 192, 192, 255); rgb_matrix_set_color(6, 64, 64, 255);  rgb_matrix_set_color(7, 32, 32, 255);  rgb_matrix_set_color(8, 0, 0, 255);
 		rgb_matrix_set_color(9, 255, 0, 0);     rgb_matrix_set_color(10, 255, 128, 0); rgb_matrix_set_color(11, 255, 255, 0); rgb_matrix_set_color(12, 128, 255, 0);
 	}
-	
+
 	if (layer_state_is(_FL)) {
 		for (int i = 0; i < 9; i++) {
 			rgb_matrix_set_color(FL_KEYS[i], 255, 0, 0);
@@ -259,7 +259,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max)
 	//blink capslock key orange when capsword is enabled
 	bool isCapswordLedOn = true;
 	static uint16_t key_timer;
-	
+
 	if (is_caps_word_on()) {
 		if (timer_elapsed(key_timer) > 400) {
 			isCapswordLedOn = !isCapswordLedOn;
@@ -267,7 +267,7 @@ bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max)
 		} else if (timer_elapsed(key_timer) > 200) {
 			isCapswordLedOn = !isCapswordLedOn;
 		}
-		
+
 		if (isCapswordLedOn) {
 			RGB_MATRIX_INDICATOR_SET_COLOR(54, 255, 128, 0); //caps(lock||word) orange
 		}
